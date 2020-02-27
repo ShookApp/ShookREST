@@ -18,6 +18,10 @@ namespace ShookREST
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            // Reads the connection string from the appsettings.json. 
+            Util.StaticStrings.DATABASE_CONNECTION_STRING =
+                Configuration["ConnectionStrings:MongoDB"];
         }
 
         public IConfiguration Configuration { get; }
@@ -25,9 +29,6 @@ namespace ShookREST
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Reads the connection string from the appsettings.json. This feature has to be enhanced.
-            var connection = Configuration["ConnectionStrings:MongoDB"];
-
             services.AddControllers();
         }
 
