@@ -25,6 +25,9 @@ namespace ShookREST
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Reads the connection string from the appsettings.json. This feature has to be enhanced.
+            var connection = Configuration["ConnectionStrings:MongoDB"];
+
             services.AddControllers();
         }
 

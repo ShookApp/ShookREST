@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,11 +12,7 @@ namespace ShookREST.Util
     {
         public DBUtil()
         {
-            var client = new MongoClient(
-                "");
-            var database = client.GetDatabase("test");
-
-            Console.WriteLine(database);
+           
         }
     }
 }
