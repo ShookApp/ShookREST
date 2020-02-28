@@ -10,7 +10,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using ShookREST.Utils;
 
 namespace ShookREST
 {
@@ -19,14 +18,6 @@ namespace ShookREST
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-
-            ReadAppsettings();
-        }
-
-        // Reads the appsettings.json and saves important string to StaticStrings class.
-        private void ReadAppsettings()
-        {
-            StaticStrings.DB_CONNECTION_STRING = Configuration.GetConnectionString("MongoDB");
         }
 
         public IConfiguration Configuration { get; }
