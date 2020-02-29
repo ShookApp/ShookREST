@@ -5,6 +5,6 @@ namespace ShookREST.Util
     {
         // The ConnectionString of the database. The string is set at startup
         // of the application.
-        public static string DATABASE_CONNECTION_STRING;
+        public static string DB_CONNECTION_STRING;
     }
 }
