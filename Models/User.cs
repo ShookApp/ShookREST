@@ -1,18 +1,19 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace ShookREST.Models
 {
-    // Data class of one user.
-    [BsonIgnoreExtraElements]
     public class User
     {
-        // First name of the user.
+        public ObjectId Id { get; set; }
+
+        [BsonElement("FirstName")]
         public string FirstName { get; set; }
 
-        // Last name of the user.
+        [BsonElement("LastName")]
         public string LastName { get; set; }
 
-        // Address of the user. Every user has an address.
+        [BsonElement("Address")]
         public Address Address { get; set; }
     }
 }

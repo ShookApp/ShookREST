@@ -1,18 +1,19 @@
-﻿namespace ShookREST.Models
+﻿using MongoDB.Bson.Serialization.Attributes;
+
+namespace ShookREST.Models
 {
-    // Address class. Every user has one address.
     public class Address
     {
-        // Street name of the address.
+        [BsonElement("Street")]
         public string Street { get; set; }
 
-        // House number of the address.
+        [BsonElement("HouseNumber")]
         public string HouseNumber { get; set; }
 
-        // City of the address
+        [BsonElement("City")]
         public string City { get; set; }
 
-        // Zip code of the address.
+        [BsonElement("ZipCode")]
         public string ZipCode { get; set; }
     }
 }
