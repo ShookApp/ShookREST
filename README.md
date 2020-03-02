@@ -14,6 +14,6 @@ for now. Maybe there is some stuff coming in the future.
 # Other repositories related to Shook app
 
 * [App](https://github.com/ShookApp/ShookApp)
-* [Model Model](https://github.com/ShookApp/ShookModel)
+* [Shook Model](https://github.com/ShookApp/ShookModel)
 
 # Contributors
