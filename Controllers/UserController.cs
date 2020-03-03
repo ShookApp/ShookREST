@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using ShookREST.Models;
+using ShookModel.Models;
 using ShookREST.Util;
 
 namespace ShookREST.Controllers

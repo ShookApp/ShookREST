@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using ShookREST.Models;
+using ShookModel.Models;
 using ShookREST.Util.MongoDB;
 
 namespace ShookREST.Util
 {
-    public class UserRepositoryImpl : IUserRepository
+    public class UserRepositoryImpl : IMongoRepository
     {
         private readonly IMongoDatabase _database;
 
