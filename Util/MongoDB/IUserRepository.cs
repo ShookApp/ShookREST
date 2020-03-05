@@ -1,10 +1,11 @@
 ﻿using MongoDB.Bson;
-using ShookREST.Models;
 using System.Collections.Generic;
+
+using ShookModel.Models;
 
 namespace ShookREST.Util.MongoDB
 {
-    interface IUserRepository
+    interface IMongoRepository
     {
         IEnumerable<User> AllUsers();
 
