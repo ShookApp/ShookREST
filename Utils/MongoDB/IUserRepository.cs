@@ -5,7 +5,7 @@ using ShookModel.Models;
 
 namespace ShookREST.Util.MongoDB
 {
-    interface IMongoRepository
+    interface IUserRepository
     {
         IEnumerable<User> AllUsers();
 

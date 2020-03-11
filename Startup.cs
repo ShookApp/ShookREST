@@ -23,10 +23,11 @@ namespace ShookREST
             ReadAppsettings();
         }
 
-        // Reads the appsettings.json and saves important string to StaticStrings class.
+        // Reads the appsettings.json and saves important strings to StaticStrings class.
         private void ReadAppsettings()
         {
             StaticStrings.DB_CONNECTION_STRING = Configuration.GetConnectionString("MongoDB");
+            StaticStrings.API_KEY = Configuration.GetValue<string>("APIKey");
         }
 
         public IConfiguration Configuration { get; }

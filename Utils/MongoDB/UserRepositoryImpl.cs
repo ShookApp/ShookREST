@@ -8,7 +8,7 @@ using ShookREST.Util.MongoDB;
 
 namespace ShookREST.Util
 {
-    public class UserRepositoryImpl : IMongoRepository
+    public class UserRepositoryImpl : IUserRepository
     {
         private readonly IMongoDatabase _database;
 
