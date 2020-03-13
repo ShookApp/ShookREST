@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace ShookREST.Util.Authorisation
+namespace ShookREST.Util.Authorization
 {
     public class AuthorizationKeyFilterAttribute : Attribute, IAuthorizationFilter
     {

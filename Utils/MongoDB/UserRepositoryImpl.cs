@@ -40,9 +40,20 @@ namespace ShookREST.Util
         public User GetById(ObjectId id)
         {
             var query = Builders<User>.Filter.Eq(e => e.Id, id);
-            var speaker = _database.GetCollection<User>("users").Find(query).ToListAsync();
+            var user = _database.GetCollection<User>("users").Find(query).ToListAsync();
 
-            return speaker.Result.FirstOrDefault();
+            return user.Result.FirstOrDefault();
+        }
+
+        public User GetByUsernameAndPassword(string username, string password)
+        {
+            var queryUsername = Builders<User>.Filter.Eq(e => e.UserData.UserName, username);
+            var queryPassword = Builders<User>.Filter.Eq(e => e.UserData.Password, password);
+            var combinedFilters = Builders<User>.Filter.And(queryUsername, queryPassword);
+            // TODO: Password hashing algorithm to find the password in the database.
+            var user = _database.GetCollection<User>("users").Find(combinedFilters).ToListAsync();
+
+            return user.Result.FirstOrDefault();
         }
 
         public Boolean Remove(ObjectId id)

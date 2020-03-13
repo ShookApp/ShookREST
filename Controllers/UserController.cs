@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ShookModel.Models;
 using ShookREST.Util;
-using ShookREST.Util.Authorisation;
+using ShookREST.Util.Authorization;
 
 namespace ShookREST.Controllers
 {

@@ -11,6 +11,8 @@ namespace ShookREST.Util.MongoDB
 
         User GetById(ObjectId id);
 
+        User GetByUsernameAndPassword(string username, string password);
+
         void Add(User user);
 
         void Update(User user);
