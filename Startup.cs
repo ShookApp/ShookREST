@@ -10,14 +10,13 @@ namespace ShookREST
 {
     public class Startup
     {
-        APIKeyGenerator _aPIKeyGenerator;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
             // Start the APIKeyGenerator.
-            _aPIKeyGenerator = new APIKeyGenerator();
+            new APIKeyGenerator();
 
             ReadAppsettings();
         }

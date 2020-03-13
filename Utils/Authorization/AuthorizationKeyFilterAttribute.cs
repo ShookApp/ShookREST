@@ -7,7 +7,6 @@ namespace ShookREST.Util.Authorization
 {
     public class AuthorizationKeyFilterAttribute : Attribute, IAuthorizationFilter
     {
-        // Check if the delivered API key is valid.
         public void OnAuthorization(AuthorizationFilterContext context)
         {
             var apiKey = context.HttpContext.Request.Headers["Authorization"];
