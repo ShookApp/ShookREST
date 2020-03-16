@@ -5,11 +5,13 @@ using ShookModel.Models;
 
 namespace ShookREST.Util.MongoDB
 {
-    interface IMongoRepository
+    interface IUserRepository
     {
         IEnumerable<User> AllUsers();
 
         User GetById(ObjectId id);
+
+        User GetByUsernameAndPassword(string username, string password);
 
         void Add(User user);
 

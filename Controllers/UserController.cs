@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ShookModel.Models;
 using ShookREST.Util;
+using ShookREST.Util.Authorization;
 
 namespace ShookREST.Controllers
 {
@@ -12,6 +13,7 @@ namespace ShookREST.Controllers
         private readonly UserRepositoryImpl _userRepositoryImpl = new UserRepositoryImpl();
 
         [HttpGet]
+        [AuthorizationKeyFilter]
         public IEnumerable<User> Get()
         {
             return _userRepositoryImpl.AllUsers();

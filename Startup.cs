@@ -1,29 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using ShookREST.Util;
+using ShookREST.Util.Authorization;
 
 namespace ShookREST
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
 
+            // Start the APIKeyGenerator.
+            new APIKeyGenerator();
+
             ReadAppsettings();
         }
 
-        // Reads the appsettings.json and saves important string to StaticStrings class.
+        // Reads the appsettings.json and saves important strings to StaticStrings class.
         private void ReadAppsettings()
         {
             StaticStrings.DB_CONNECTION_STRING = Configuration.GetConnectionString("MongoDB");
