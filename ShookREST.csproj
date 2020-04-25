@@ -5,6 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="https://github.com/ShookApp/ShookModel/ShookModel.csproj" />
+    <ProjectReference Include="../ShookModel/ShookModel.csproj" />
   </ItemGroup>
 </Project>
