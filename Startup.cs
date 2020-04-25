@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using ShookREST.Util;
+using ShookREST.Utils;
+using ShookREST.Utils.Authorization;
 
 namespace ShookREST
 {
@@ -20,14 +14,21 @@ namespace ShookREST
         {
             Configuration = configuration;
 
+            // Start the APIKeyGenerator.
+            new ApiKeyGenerator();
+
             ReadAppsettings();
         }
 
-        // Reads the appsettings.json and saves important string to StaticStrings class.
+        /// <summary>
+        /// Reads the appsettings.json and saves important strings to <see cref="StaticStrings"/> class.
+        /// </summary>
         private void ReadAppsettings()
         {
-            StaticStrings.DB_CONNECTION_STRING = Configuration.GetConnectionString("MongoDB");
+            StaticStrings.DbConnectionString = Configuration.GetConnectionString("MongoDB");
         }
+
+        #region Asp.NET stuff
 
         public IConfiguration Configuration { get; }
 
@@ -56,5 +57,7 @@ namespace ShookREST
                 endpoints.MapControllers();
             });
         }
+
+        #endregion
     }
 }
