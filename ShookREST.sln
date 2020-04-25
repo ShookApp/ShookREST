@@ -4,7 +4,7 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShookREST", "ShookREST.csproj", "{F1E3A2ED-9D92-4E36-A4E3-61EFD3139E3A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShookModel", "..\ShookModel\ShookModel.csproj", "{7FB10729-934C-4B51-A927-5410A64C57B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShookModel", "https://github.com/ShookApp/ShookModel/ShookModel.csproj", "{7FB10729-934C-4B51-A927-5410A64C57B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
