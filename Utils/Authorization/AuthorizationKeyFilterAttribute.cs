@@ -3,8 +3,12 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace ShookREST.Util.Authorization
+namespace ShookREST.Utils.Authorization
 {
+    /// <summary>
+    /// All api requests (GET, POST, ...) that are annotated with this attribute have to provide the api key in the
+    /// request header. The key is "Authorization" and the value should be the valid api key.
+    /// </summary>
     public class AuthorizationKeyFilterAttribute : Attribute, IAuthorizationFilter
     {
         public void OnAuthorization(AuthorizationFilterContext context)
@@ -13,7 +17,7 @@ namespace ShookREST.Util.Authorization
 
             if (apiKey.Any())
             {
-                if (!apiKey.ToString().Equals(StaticStrings.API_KEY))
+                if (!apiKey.ToString().Equals(StaticStrings.ApiKey))
                 {
                     context.Result = new UnauthorizedResult();
                 }

@@ -1,14 +1,19 @@
 ﻿using System;
-namespace ShookREST.Util
+namespace ShookREST.Utils
 {
-    public class StaticStrings
+    /// <summary>
+    /// This class saves important strings.
+    /// </summary>
+    public static class StaticStrings
     {
-        // The ConnectionString of the database. The string is set at startup
-        // of the application.
-        public static string DB_CONNECTION_STRING;
+        /// <summary>
+        /// The ConnectionString of the database. The string is set at startup of the application.
+        /// </summary>
+        public static string DbConnectionString;
 
-        // The API key that is valid for 24 hours. After 24 hours the
-        // APIKeyGenerator should generate a new key.
-        public static string API_KEY;
+        /// <summary>
+        /// The API key that is valid for 24 hours. After 24 hours the APIKeyGenerator should generate a new key.
+        /// </summary>
+        public static string ApiKey;
     }
 }

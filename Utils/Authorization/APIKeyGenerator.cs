@@ -5,26 +5,35 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ShookREST.Util.Authorization
+namespace ShookREST.Utils.Authorization
 {
-    public class APIKeyGenerator
+    /// <summary>
+    /// This class generates a random api key every 24 hours.
+    /// </summary>
+    public class ApiKeyGenerator
     {
         private readonly Thread _generatorThread = new Thread(
             new ThreadStart(GenerateAndWrite));
 
         public static DateTime Created { get; private set; }
 
-        public APIKeyGenerator()
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        public ApiKeyGenerator()
         {
             _generatorThread.Start();
         }
 
+        /// <summary>
+        /// Receives the api key and saves it to the <see cref="StaticStrings"/> class.
+        /// </summary>
         private static void GenerateAndWrite()
         {
             // TODO: Improve loop.
             while (true)
             {
-                StaticStrings.API_KEY = GetHash();
+                StaticStrings.ApiKey = GetHash();
                 Created = DateTime.Now;
                 Thread.Sleep(86400000);
             }
@@ -32,38 +41,52 @@ namespace ShookREST.Util.Authorization
 
         #region private methods
 
+        /// <summary>
+        /// Gets the mac address of every network interface of the machine.
+        /// </summary>
+        /// <returns>A list of strings that includes the mac addresses of every available network interface.</returns>
         private static List<string> GetMacAddresses()
         {
-            NetworkInterface[] _networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-            List<string> _adapters = new List<string>();
+            var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
+            var adapters = new List<string>();
 
-            foreach (NetworkInterface networkInterface in _networkInterfaces)
+            foreach (NetworkInterface networkInterface in networkInterfaces)
             {
-                _adapters.Add(networkInterface.GetPhysicalAddress().ToString());
+                adapters.Add(networkInterface.GetPhysicalAddress().ToString());
             }
 
-            return _adapters;
+            return adapters;
         }
 
+        /// <summary>
+        /// Creates a hash of a mac address and a random string.
+        /// </summary>
+        /// <returns>A string that is a hash of a mac address and a random string.</returns>
         private static string GetHash()
         {
-            List<string> _macAddresses = GetMacAddresses();
+            var macAddresses = GetMacAddresses();
 
-            MD5 provider = MD5.Create();
+            var provider = MD5.Create();
 
-            string salt = RandomString(12, false); //RANDOM STRING!
-            string password = _macAddresses[11];
+            var salt = RandomString(12, false);
+            var password = macAddresses[11];
 
-            byte[] bytes = provider.ComputeHash(Encoding.ASCII.GetBytes(salt + password));
+            var bytes = provider.ComputeHash(Encoding.ASCII.GetBytes(salt + password));
 
             return BitConverter.ToString(bytes);
         }
 
+        /// <summary>
+        /// Creates a random string.
+        /// </summary>
+        /// <param name="size">The amount of characters.</param>
+        /// <param name="lowerCase">Should the string be lower case only?</param>
+        /// <returns>A random string.</returns>
         private static string RandomString(int size, bool lowerCase)
         {
-            StringBuilder builder = new StringBuilder();
+            var builder = new StringBuilder();
 
-            Random random = new Random();
+            var random = new Random();
 
             char ch;
 
